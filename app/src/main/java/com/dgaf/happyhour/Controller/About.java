@@ -7,6 +7,10 @@ import android.view.MenuItem;
 
 import com.dgaf.happyhour.R;
 
+
+/* Finish up this activity. Add some text talking about us and have it look pretty. The action bar
+ * needs to have a back button that navigates to the main activity.
+ */
 public class About extends ActionBarActivity {
 
     @Override

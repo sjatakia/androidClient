@@ -12,9 +12,10 @@ import android.widget.TextView;
 import com.dgaf.happyhour.DealListType;
 import com.dgaf.happyhour.R;
 import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
+import com.parse.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class DealListAdapter extends BaseAdapter{
         dealItems = new ArrayList<DealModel>();
 
         // Get users GPS coords
-        double radiusMi = 5.0;
+        double radiusMi = 100.0;
         ParseGeoPoint location = new ParseGeoPoint(32.000,-117.0000);
 
         switch(listType) {
@@ -51,6 +52,7 @@ public class DealListAdapter extends BaseAdapter{
 
     public void loadLocalDeals(ParseGeoPoint location, double radiusMi) {
         // Setup the database Query
+
         ParseQuery<RestaurantModel> localRestaurants = ParseQuery.getQuery(RestaurantModel.class);
         localRestaurants.whereWithinMiles("location", location, radiusMi);
         localRestaurants.include("deals");
